@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS = [
+    BASE_DIR / "escolares/templates/static"
+]
 
 # Application definition
 

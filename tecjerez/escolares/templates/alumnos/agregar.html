@@ -23,7 +23,7 @@
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <img src="../static/assets/images/estudiantes.png" class="img-fluid">
+        <img src="{% static 'assets/images/estudiantes.png' %}" class="img-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
           aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -84,14 +84,14 @@
 
                       <section class="example mt-4">
 
-                        <form method="PUT" role="form" enctype="multipart/form-data">
+                        <form method="POST" role="form" enctype="multipart/form-data">
                                                         <!--ENCTYPE ES IMPORTANTE -->
                           {% csrf_token %}
 
                           <div class="mb-3">
                             <label for="num_control" class="negrita">Numero de Control:</label>
                             <div>
-                              {{form.numControl|add_class:"form-control"|value:"foo:baz"}}
+                              {{form.numControl|add_class:"form-control"}}
                             </div>
                           </div>
 

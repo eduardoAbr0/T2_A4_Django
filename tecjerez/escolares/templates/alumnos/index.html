@@ -30,7 +30,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <img src="../static/assets/images/estudiantes.png" class="img-fluid">
+                <img src="{% static 'assets/images/estudiantes.png' %}" class="img-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
                     aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -94,10 +94,8 @@
                                     {% if messages %}
                                     <ul class="messages list-group mb-3">
                                         {% for message in messages %}
-                                            <li>
-                                                {% if message.tags %}
-                                                class="{{ message.tags }} list-group-item list-group-item-success" 
-                                                {% endif%} {{ message }}
+                                            <li {% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-success" {% endif%}> 
+                                                {{ message }}
                                             </li>
                                         {% endfor %}
                                     </ul>
