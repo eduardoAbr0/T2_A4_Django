@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-n^640(iq2(t19oc5yok(2-!#d9&hsd2k4$%!w0-y@*qan2&)6u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['t2-a4-django.onrender.com']
 
 STATICFILES_DIRS = [
     BASE_DIR / "escolares/templates/static"
