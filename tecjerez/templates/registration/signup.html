@@ -16,7 +16,7 @@
         $(document).ready(function () {
             setTimeout(function () {
                 $(".errors").fadeOut(1500);
-            }, 3000); // Un poco más de tiempo para errores de registro que suelen ser más largos
+            }, 3000); 
         });
     </script>
 </head>
@@ -28,7 +28,7 @@
             <h2>Crear cuenta</h2>
         </div>
 
-        <form class="mt-5" action="{% url 'signup' %}" method="POST">
+        <form class="mt-5" method="POST">
             {% csrf_token %}
 
             <div class="mb-4 col-lg-4 mx-auto">
@@ -39,13 +39,13 @@
 
             <div class="mb-4 col-lg-4 mx-auto">
                 <label for="password" class="form-label fw-semibold">Contraseña:</label>
-                <input type="password" class="form-control" name="password" id="password"
+                <input type="password" class="form-control" name="password1" id="password"
                     placeholder="Cree una contraseña" required />
             </div>
 
             <div class="mb-4 col-lg-4 mx-auto">
                 <label for="password_confirm" class="form-label fw-semibold">Confirmar contraseña:</label>
-                <input type="password" class="form-control" name="password_confirm" id="password_confirm"
+                <input type="password" class="form-control" name="password2" id="password_confirm"
                     placeholder="Repita su contraseña" required />
             </div>
 

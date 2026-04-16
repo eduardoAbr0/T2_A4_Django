@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,11 +93,11 @@ DATABASES = {
     },
     'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'BD_Django_2026',
-        'USER': 'alej',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '3307',
+        'NAME': os.getenv('MYSQL_ADDON_DB'),
+        'USER': os.getenv('MYSQL_ADDON_USER'),
+        'PASSWORD': os.getenv('MYSQL_ADDON_PASSWORD'),
+        'HOST': os.getenv('MYSQL_ADDON_HOST'),
+        'PORT': os.getenv('MYSQL_ADDON_PORT'),
         'OPTIONS': {
             'connect_timeout': 10,
             'ssl_disabled': True,
