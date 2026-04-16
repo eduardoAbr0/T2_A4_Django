@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro - Sistemas Escolares</title>
+    <link rel="icon" type="image/x-icon" href="/form-icon.png" />
+
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".errors").fadeOut(1500);
+            }, 3000); // Un poco más de tiempo para errores de registro que suelen ser más largos
+        });
+    </script>
+</head>
+
+<body>
+    <div class="form-signup">
+        <div class="text-center mt-5">
+            <h1>Sistemas escolares</h1>
+            <h2>Crear cuenta</h2>
+        </div>
+
+        <form class="mt-5" action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="mb-4 col-lg-4 mx-auto">
+                <label for="username" class="form-label fw-semibold">Usuario:</label>
+                <input type="text" class="form-control" name="username" id="username"
+                    placeholder="Elija un nombre de usuario" required />
+            </div>
+
+            <div class="mb-4 col-lg-4 mx-auto">
+                <label for="password" class="form-label fw-semibold">Contraseña:</label>
+                <input type="password" class="form-control" name="password" id="password"
+                    placeholder="Cree una contraseña" required />
+            </div>
+
+            <div class="mb-4 col-lg-4 mx-auto">
+                <label for="password_confirm" class="form-label fw-semibold">Confirmar contraseña:</label>
+                <input type="password" class="form-control" name="password_confirm" id="password_confirm"
+                    placeholder="Repita su contraseña" required />
+            </div>
+
+            <div class="d-grid col-lg-4 mx-auto">
+                <button type="submit" class="btn btn-primary btn-lg">Registrarse</button>
+            </div>
+
+            <div class="text-center mt-3">
+                <p>¿Ya tienes cuenta? <a href="{% url 'login' %}" class="text-info">Inicia sesión aquí</a></p>
+            </div>
+        </form>
+
+        {% if form.errors %}
+        <div class="container">
+            <div class="errors alert alert-danger mt-3 col-lg-4 mx-auto" role="alert">
+                <ul class="mb-0">
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

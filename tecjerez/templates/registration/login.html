@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="icon" type="image/x-icon" href="/form-icon.png" />
+
+  {% load django_bootstrap5 %}
+  {% bootstrap_css %}
+
+  <!-- JQUERY para desaparecer mensajes-->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      setTimeout(function () {
+        $(".errors").fadeOut(1500);
+      }, 3000);
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="form-login">
+    <div class="text-center">
+      <h1>Sistem escolares</h1>
+      <h2>Bienvenido</h2>
+    </div>
+    <form class="mt-5" action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+
+      <div class="mb-4 col-lg-4 mx-auto">
+        <label for="user" class="form-label fw-semibold">Usuario:</label>
+        <input type="text" class="form-control" name="username" id="user" placeholder="Su nombre de usuario." />
+      </div>
+
+      <div class="mb-4 col-lg-4 mx-auto">
+        <label for="password" class="form-label fw-semibold">Contraseña:</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Su contraseña." />
+      </div>
+      <div class="d-grid col-lg-4 mx-auto">
+        <button type="submit" class="btn btn-primary btn-lg">Iniciar sesion</button>
+      </div>
+    </form>
+
+    {% if form.errors %}
+    <div class="container">
+      <div class="errors text-center alert alert-danger mt-3" role="alert">
+        Su nombre de usuario-contraseña no coinciden. Inténtalo de nuevo.
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="text-center text-info">
+    <a href="{% url 'signup' %}">Crear cuenta</a>
+  </div>
+
+</body>
+
+</html>

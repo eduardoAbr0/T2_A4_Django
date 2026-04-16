@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión Cerrada - Sistemas Escolares</title>
+    <link rel="icon" type="image/x-icon" href="/form-icon.png" />
+
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+
+<body>
+    <div class="form-logout vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="text-center">
+
+                <h1 class="display-5 fw-bold">Sesión cerrada</h1>
+                <p class="lead mb-5">Has salido del sistema correctamente.</p>
+
+                <div class="col-lg-4 mx-auto">
+                    <div class="d-grid shadow">
+                        <a href="{% url 'login' %}" class="btn btn-primary btn-lg fw-semibold">
+                            Volver a Iniciar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
