@@ -15,12 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView
 
 from escolares.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('', RedirectView.as_view(url='/accounts/login/', permanent=True)),
 
     path('alumnos/', ListadoAlumno.as_view(template_name="alumnos/index.html"), name='listar'),
     path('alumnos/detalle/<int:pk>', DetalleAlumno.as_view(template_name="alumnos/detalle.html"), name='detalle'),

@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Alumno
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -12,7 +13,7 @@ from django import forms
 
 #--ALTAS
 #--
-class CrearAlumno(SuccessMessageMixin, CreateView):
+class CrearAlumno(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Alumno
     form = Alumno
     fields = "__all__"
@@ -36,7 +37,7 @@ class EliminarAlumno(SuccessMessageMixin, DeleteView):
     
 #--CAMBIOS
 #--
-class ModificarAlumno(SuccessMessageMixin, UpdateView):
+class ModificarAlumno(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Alumno
     form = Alumno
     fields = "__all__"
@@ -47,8 +48,9 @@ class ModificarAlumno(SuccessMessageMixin, UpdateView):
     
 #--CONSULTAS
 #--
-class DetalleAlumno(DetailView):
+class DetalleAlumno(LoginRequiredMixin, DetailView):
     model = Alumno
 
-class ListadoAlumno(ListView):
+class ListadoAlumno(LoginRequiredMixin, ListView):
     model = Alumno
+    

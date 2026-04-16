@@ -9,5 +9,6 @@ class Alumno(models.Model):
     semestre = models.IntegerField()
     carrera = models.CharField(max_length=50)
 
-class Meta:
-    db_table = 'alumnos'
+    class Meta:
+        db_table = 'alumnos'
+        

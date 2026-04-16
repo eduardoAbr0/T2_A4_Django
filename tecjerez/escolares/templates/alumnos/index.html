@@ -49,6 +49,19 @@
                         </li>
                     </ul>
 
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'logout' %}" class="d-inline">
+                                {% csrf_token %}
+                                <button class="btn btn-danger fw-bold" type="submit">
+                                    Cerrar sesión
+                                </button>
+                            </form>
+                        </li>
+                        {% endif %}
+                    </ul>
+
                 </div>
             </div>
         </nav>
@@ -94,9 +107,11 @@
                                     {% if messages %}
                                     <ul class="messages list-group mb-3">
                                         {% for message in messages %}
-                                            <li {% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-success" {% endif%}> 
-                                                {{ message }}
-                                            </li>
+                                        <li {% if message.tags %}
+                                            class="{{ message.tags }} list-group-item list-group-item-success"
+                                            {%endif%}>
+                                            {{ message }}
+                                        </li>
                                         {% endfor %}
                                     </ul>
                                     {% endif %}
